@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_DIR =os.path.join(BASE_DIR,'static')
@@ -25,9 +26,9 @@ SECRET_KEY = 'django-insecure-!okhtb)o*57&!(nwthgp228+!pcmvpq$a(_d+4(04y#_pufjgm
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+# DEBUG = False
+# ALLOWED_HOSTS = ['*']  for 404.html
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -39,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blogs',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'blogs.context_processors.get_categories'
             ],
         },
     },
@@ -128,3 +132,8 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR /'media'
+
+# crispy form with bootstrap
+CRISPY_TEMPLATE_PACK = 'crispy-bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
